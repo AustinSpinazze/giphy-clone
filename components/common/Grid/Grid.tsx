@@ -1,16 +1,28 @@
+import { useState } from 'react';
 import { GridProps } from '../../../utils/types/types';
+import styles from './styles.module.css';
 
-const Grid = ({ gifs, Card, columns, direction }: GridProps) => {
+const Grid = ({ gifs, Card }: GridProps) => {
+	useState;
 	return (
-		<ul>
-			{gifs.map((gif, index) => {
-				return (
-					<li key={index}>
-						<Card gif={gif} method={() => console.log('Passed')} />
-					</li>
-				);
-			})}
-		</ul>
+		<>
+			{gifs.length > 0 ? (
+				<ul className={styles.grid}>
+					{gifs.map((gif, index) => {
+						return (
+							<li key={index}>
+								<Card
+									gif={gif}
+									method={() => console.log('Passed')}
+								/>
+							</li>
+						);
+					})}
+				</ul>
+			) : (
+				<p>No GIFs found...</p>
+			)}
+		</>
 	);
 };
 

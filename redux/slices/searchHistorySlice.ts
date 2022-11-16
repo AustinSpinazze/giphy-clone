@@ -1,17 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { GIF } from '../../utils/types/types';
-
-export interface SearchHistoryState {
-	searchHistory: SearchResult[];
-}
-
-export interface SearchResult {
-	[key: string]: GIF;
-}
+import { GIF, SearchHistoryState, SearchResult } from '../../utils/types/types';
 
 const initialState: SearchHistoryState = {
-	searchHistory: [],
+	searchHistoryArray: [],
 };
 
 export const searchHistorySlice = createSlice({
@@ -19,7 +11,7 @@ export const searchHistorySlice = createSlice({
 	initialState,
 	reducers: {
 		addSearchResult: (state, action: PayloadAction<SearchResult>) => {
-			state.searchHistory.push(action.payload);
+			state.searchHistoryArray.push(action.payload);
 		},
 	},
 });

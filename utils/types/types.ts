@@ -1,11 +1,6 @@
 export type Rating = 'y' | 'g' | 'pg' | 'pg-13' | 'r';
 
 export interface GIF {
-	data: GIFObject;
-	meta: MetaObject;
-}
-
-export interface GIFObject {
 	type: string;
 	id: string;
 	slug: string;
@@ -121,6 +116,7 @@ export interface BaseImage {
 
 export interface MultiResponse extends BaseResponse {
 	data: GIF[];
+	pagination: { total_count: number; count: number; offset: number };
 }
 
 export interface SingleResponse extends BaseResponse {
@@ -128,7 +124,6 @@ export interface SingleResponse extends BaseResponse {
 }
 
 export interface BaseResponse {
-	pagination: { total_count: number; count: number; offset: number };
 	meta: {
 		status: number;
 		msg: string;
@@ -136,7 +131,17 @@ export interface BaseResponse {
 	};
 }
 
-export interface MetaObject {}
+export interface MetaObject {
+	status: number;
+	msg: string;
+	response_id: string;
+}
+
+export interface PaginationObject {
+	total_count: number;
+	count: number;
+	offset: number;
+}
 
 export interface CardProps {
 	gif: GIF;
@@ -146,6 +151,13 @@ export interface CardProps {
 export interface GridProps {
 	gifs: GIF[];
 	Card: React.FC<CardProps>;
-	columns: number;
-	direction: string;
+}
+
+export interface SearchHistoryState {
+	searchHistoryArray: SearchResult[];
+}
+
+export interface SearchResult {
+	results: MultiResponse;
+	debouncedValue: string;
 }
