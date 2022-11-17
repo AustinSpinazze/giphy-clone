@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import searchHistoryReducer from '../redux/slices/searchHistorySlice';
+import drawerToggleReducer from './slices/drawerToggleSlice';
 
 export const store = configureStore({
 	reducer: {
 		searchHistory: searchHistoryReducer,
+		drawerToggle: drawerToggleReducer,
 	},
 });
 

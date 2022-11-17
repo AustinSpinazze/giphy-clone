@@ -3,11 +3,11 @@ import { CardProps } from '../../../utils/types/types';
 import { Button } from '../../index';
 import styles from './styles.module.css';
 
-const Card = ({ gif, method }: CardProps) => {
+const Card = ({ gif }: CardProps) => {
 	const [value, copy] = useCopyToClipboard();
 
 	return (
-		<article>
+		<article className={styles.card}>
 			<video
 				autoPlay={true}
 				muted={true}
@@ -21,16 +21,17 @@ const Card = ({ gif, method }: CardProps) => {
 					instead.
 				</p>
 			</video>
-			<video />
-			{/* <div>
-				<h3>{gif.data.title}</h3>
-				<Button
-					label='Copy'
-					method={() => copy(gif.data.images.original.url)}
-					typeOfButton='button'
-					size='md'
-				/>
-			</div> */}
+			<div className={styles.overlay}>
+				<div className={styles.overlayContent}>
+					<h3>{gif.title}</h3>
+					<Button
+						label='Copy'
+						method={() => copy(gif.images.original.url)}
+						typeOfButton='button'
+						size='md'
+					/>
+				</div>
+			</div>
 		</article>
 	);
 };

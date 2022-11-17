@@ -1,11 +1,9 @@
+import { ChangeEvent, useState } from 'react';
 import { InferGetStaticPropsType, GetStaticProps } from 'next';
-import { shallowEqual, useSelector } from 'react-redux';
 
-import type { RootState } from '../redux/store';
-import styles from './styles.module.css';
 import { GIF } from '../utils/types/types';
-import Grid from '../components/common/Grid/Grid';
-import { Card, SearchBar } from '../components';
+import { Card, Drawer, SearchBar, Grid } from '../components';
+import styles from './styles.module.css';
 
 export const getStaticProps: GetStaticProps<{
 	initialRandomGifs: GIF[];
@@ -32,12 +30,41 @@ export const getStaticProps: GetStaticProps<{
 export default function Home({
 	initialRandomGifs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-	const searchHistory = useSelector(
-		(state: RootState) => state.searchHistory.searchHistoryArray
-	);
+	const [currentSearch, setCurrentSearch] = useState<GIF[]>([]);
+	const [loading, setLoading] = useState<boolean>(false);
+	const [searchTerm, setSearchTerm] = useState<string>('');
+
+	const toggleLoader = (value: boolean) => {
+		setLoading(value);
+	};
+
+	const updateSearchTerm = (event: ChangeEvent<HTMLInputElement>) => {
+		setSearchTerm(event.target.value);
+	};
+
+	const clearSearchTerm = () => {
+		setSearchTerm('');
+	};
+
+	const updateSearchGrid = (data: GIF[]) => {
+		setTimeout(() => {
+			setCurrentSearch(data);
+			toggleLoader(false);
+		}, 1000);
+	};
+
+	const clearSearchGrid = () => {
+		setCurrentSearch([]);
+		toggleLoader(true);
+	};
 
 	return (
 		<main className={styles.mainContainer}>
+			<Drawer
+				updateSearchGrid={updateSearchGrid}
+				clearSearchGrid={clearSearchGrid}
+				clearSearchTerm={clearSearchTerm}
+			/>
 			<section className={styles.randomSection}>
 				<h2>Welcome to Diamond GIFs</h2>
 				<p>
@@ -45,21 +72,27 @@ export default function Home({
 					search for more)
 				</p>
 				<div className={styles.mouse} />
-				<Grid gifs={initialRandomGifs} Card={Card} />
+				<Grid
+					gifs={initialRandomGifs}
+					Card={Card}
+					columns='gridColumnThree'
+					loading={loading}
+				/>
 			</section>
 			<section className={styles.searchSection}>
 				<h2>Search for GIFs</h2>
-				<SearchBar />
-				{searchHistory.length > 0 ? (
-					<Grid
-						gifs={
-							searchHistory[searchHistory.length - 1].results.data
-						}
-						Card={Card}
-					/>
-				) : (
-					<p>No GIFs found</p>
-				)}
+				<SearchBar
+					updateSearchGrid={updateSearchGrid}
+					clearSearchGrid={clearSearchGrid}
+					searchTerm={searchTerm}
+					updateSearchTerm={updateSearchTerm}
+				/>
+				<Grid
+					gifs={currentSearch}
+					Card={Card}
+					columns='gridColumnFour'
+					loading={loading}
+				/>
 			</section>
 		</main>
 	);

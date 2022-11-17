@@ -145,12 +145,13 @@ export interface PaginationObject {
 
 export interface CardProps {
 	gif: GIF;
-	method: Function;
 }
 
 export interface GridProps {
 	gifs: GIF[];
 	Card: React.FC<CardProps>;
+	columns: string;
+	loading: boolean;
 }
 
 export interface SearchHistoryState {
@@ -159,5 +160,5 @@ export interface SearchHistoryState {
 
 export interface SearchResult {
 	results: MultiResponse;
-	debouncedValue: string;
+	term: string;
 }
