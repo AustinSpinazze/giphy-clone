@@ -1,0 +1,34 @@
+.grid {
+	display: grid;
+	justify-items: center;
+	list-style: none;
+	padding: 0;
+	gap: 1rem;
+	margin: 0 auto;
+}
+
+.drawerOpen {
+	overflow: hidden;
+}
+
+.gridColumnThree {
+	grid-template-columns: repeat(3, 1fr);
+	max-width: 1024px;
+}
+
+.gridColumnFour {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 1300px) {
+	.gridColumnFour {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (max-width: 980px) {
+	.gridColumnThree,
+	.gridColumnFour {
+		grid-template-columns: 1fr;
+	}
+}

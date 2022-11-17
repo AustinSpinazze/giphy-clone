@@ -1,0 +1,82 @@
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 1;
+	transition: transform 0.01s ease-in-out;
+}
+
+.drawer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 450px;
+	height: 100%;
+	background-color: #fff;
+	z-index: 100;
+	transition: transform 0.3s ease-in-out;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-left: solid 1px black;
+}
+
+.close {
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	cursor: pointer;
+}
+
+.drawerTitle {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin: 25px;
+	padding: 25px;
+}
+
+.hide {
+	transform: translateX(100%);
+}
+
+.show {
+	transform: translateX(0);
+}
+
+.searchHistoryList {
+	overflow: auto;
+}
+
+.searchHistoryList::-webkit-scrollbar {
+	display: none;
+}
+
+.drawerOpen {
+	overscroll-behavior: contain;
+}
+
+.searchHistoryItem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.gif {
+	object-fit: cover;
+	margin: 0 auto;
+	width: 300px;
+	height: 300px;
+}
+
+@media screen and (max-width: 380px) {
+	.drawer {
+		width: 90%;
+	}
+}
