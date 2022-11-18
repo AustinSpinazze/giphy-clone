@@ -87,12 +87,14 @@ export default function Home({
 					searchTerm={searchTerm}
 					updateSearchTerm={updateSearchTerm}
 				/>
-				{/* <Grid
-					gifs={currentSearch}
-					Card={Card}
-					columns='gridColumnFour'
-					loading={loading}
-				/> */}
+				{currentSearch && (
+					<Grid
+						gifs={currentSearch}
+						Card={Card}
+						columns='gridColumnFour'
+						loading={loading}
+					/>
+				)}
 			</section>
 		</main>
 	);
