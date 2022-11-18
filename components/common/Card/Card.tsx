@@ -8,7 +8,7 @@ const Card = ({ gif }: CardProps) => {
 
 	return (
 		<>
-			{gif && (
+			{gif.images.original && (
 				<article className={styles.card}>
 					<video
 						autoPlay={true}
