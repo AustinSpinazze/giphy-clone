@@ -1,3 +1,6 @@
+/**
+ * The Loader component displays a simple loader
+ */
 import styles from './styles.module.css';
 
 const Loader = () => {

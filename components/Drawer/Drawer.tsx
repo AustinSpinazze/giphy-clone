@@ -1,3 +1,6 @@
+/**
+ * The Drawer component displays the search history of the user
+ */
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 

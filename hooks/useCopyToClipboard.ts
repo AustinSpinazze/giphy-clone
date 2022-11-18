@@ -1,3 +1,8 @@
+/**
+ * The useCopyToClipboard hook returns a tuple of the current copied value and a function that copies the given text to the
+ * clipboard
+ * @returns A tuple of two values.
+ */
 import { useState } from 'react';
 
 type CopiedValue = string | null;

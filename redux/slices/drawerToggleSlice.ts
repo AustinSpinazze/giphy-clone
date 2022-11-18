@@ -1,3 +1,4 @@
+/* Redux slice for Drawer state */
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 

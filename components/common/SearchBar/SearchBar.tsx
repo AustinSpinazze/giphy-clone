@@ -1,3 +1,6 @@
+/**
+ * The SearchBar component enables the user to be able to search for GIFs from Giphy
+ */
 import { useState, useEffect, KeyboardEvent } from 'react';
 import { useDispatch } from 'react-redux';
 

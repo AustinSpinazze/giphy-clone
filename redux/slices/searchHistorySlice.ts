@@ -1,3 +1,4 @@
+/* Redux slice for application Search History */
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { GIF, SearchHistoryState, SearchResult } from '../../utils/types/types';

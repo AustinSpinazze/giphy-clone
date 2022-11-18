@@ -1,3 +1,6 @@
+/**
+ * The Grid component displays the GIFs to the users
+ */
 import { GridProps } from '../../../utils/types/types';
 import styles from './styles.module.css';
 

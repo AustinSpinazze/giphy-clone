@@ -1,3 +1,6 @@
+/**
+ * The Button component is dynamic and allows a user to pass in a label, method, typeOfButton, size
+ */
 import { useState } from 'react';
 import styles from './styles.module.css';
 
