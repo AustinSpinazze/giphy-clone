@@ -72,12 +72,12 @@ export default function Home({
 					search for more)
 				</p>
 				<div className={styles.mouse} />
-				<Grid
+				{/* <Grid
 					gifs={initialRandomGifs}
 					Card={Card}
 					columns='gridColumnThree'
 					loading={loading}
-				/>
+				/> */}
 			</section>
 			<section className={styles.searchSection}>
 				<h2>Search for GIFs</h2>
