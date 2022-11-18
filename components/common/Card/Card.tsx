@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 
 const Card = ({ gif }: CardProps) => {
 	const [value, copy] = useCopyToClipboard();
+	console.log(gif);
 
 	return (
 		<>
