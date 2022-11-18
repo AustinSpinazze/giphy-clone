@@ -72,7 +72,7 @@ export default function Home({
 					search for more)
 				</p>
 				<div className={styles.mouse} />
-				{initialRandomGifs ? (
+				{/* {initialRandomGifs.length > 0 ? (
 					<Grid
 						gifs={initialRandomGifs}
 						Card={Card}
@@ -81,7 +81,7 @@ export default function Home({
 					/>
 				) : (
 					<p>No GIFs found...👎</p>
-				)}
+				)} */}
 			</section>
 			<section className={styles.searchSection}>
 				<h2>Search for GIFs</h2>
@@ -91,7 +91,7 @@ export default function Home({
 					searchTerm={searchTerm}
 					updateSearchTerm={updateSearchTerm}
 				/>
-				{currentSearch ? (
+				{currentSearch.length > 0 ? (
 					<Grid
 						gifs={currentSearch}
 						Card={Card}
