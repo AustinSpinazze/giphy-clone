@@ -87,12 +87,12 @@ export default function Home({
 					searchTerm={searchTerm}
 					updateSearchTerm={updateSearchTerm}
 				/>
-				<Grid
+				{/* <Grid
 					gifs={currentSearch}
 					Card={Card}
 					columns='gridColumnFour'
 					loading={loading}
-				/>
+				/> */}
 			</section>
 		</main>
 	);
