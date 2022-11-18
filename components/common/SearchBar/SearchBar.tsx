@@ -54,12 +54,14 @@ const SearchBar = ({
 	};
 
 	const handleImmediateSearch = (event: KeyboardEvent<HTMLInputElement>) => {
-		if (event.key === 'Enter') {
-			updateSearchProgress(true);
-			fetchData(searchTerm);
-			setTimeout(() => {
-				updateSearchProgress(false);
-			}, 2000);
+		if (searchTerm.length > 0) {
+			if (event.key === 'Enter') {
+				updateSearchProgress(true);
+				fetchData(searchTerm);
+				setTimeout(() => {
+					updateSearchProgress(false);
+				}, 2000);
+			}
 		}
 	};
 
