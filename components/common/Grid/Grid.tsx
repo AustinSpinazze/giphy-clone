@@ -5,7 +5,9 @@ import styles from './styles.module.css';
 const Grid = ({ gifs, Card, columns, loading }: GridProps) => {
 	return (
 		<>
-			{gifs.length > 0 ? (
+			{loading === true ? (
+				<Loader />
+			) : (
 				<ul className={`${styles.grid} ${styles[columns]}`}>
 					{gifs.map((gif, index) => {
 						return (
@@ -15,10 +17,6 @@ const Grid = ({ gifs, Card, columns, loading }: GridProps) => {
 						);
 					})}
 				</ul>
-			) : loading === true ? (
-				<Loader />
-			) : (
-				<p>No GIFs found...👎</p>
 			)}
 		</>
 	);
