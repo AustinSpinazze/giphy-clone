@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from 'react';
-import { InferGetStaticPropsType, GetStaticProps } from 'next';
+import { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 
 import { GIF } from '../utils/types/types';
 import { Card, Drawer, SearchBar, Grid } from '../components';
 import styles from './styles.module.css';
 
-export const getStaticProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
 	initialRandomGifs: GIF[];
 }> = async () => {
 	const randomGifMapper: number[] = [0, 1, 2];
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps<{
 
 export default function Home({
 	initialRandomGifs,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	const [currentSearch, setCurrentSearch] = useState<GIF[]>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [searchTerm, setSearchTerm] = useState<string>('');
