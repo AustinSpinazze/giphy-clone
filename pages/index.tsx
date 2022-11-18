@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 
 import { GIF } from '../utils/types/types';
-import { Card, Drawer, SearchBar, Grid } from '../components';
+import { Card, Drawer, SearchBar, Grid, Loader } from '../components';
 import styles from './styles.module.css';
 
 export const getServerSideProps: GetServerSideProps<{
@@ -72,16 +72,15 @@ export default function Home({
 					search for more)
 				</p>
 				<div className={styles.mouse} />
-				{/* {initialRandomGifs.length > 0 ? (
+				{initialRandomGifs.length > 0 ? (
 					<Grid
 						gifs={initialRandomGifs}
 						Card={Card}
 						columns='gridColumnThree'
-						loading={loading}
 					/>
 				) : (
 					<p>No GIFs found...👎</p>
-				)} */}
+				)}
 			</section>
 			<section className={styles.searchSection}>
 				<h2>Search for GIFs</h2>
@@ -96,10 +95,11 @@ export default function Home({
 						gifs={currentSearch}
 						Card={Card}
 						columns='gridColumnFour'
-						loading={loading}
 					/>
+				) : loading === true ? (
+					<Loader />
 				) : (
-					<p>No GIFs found...👎 </p>
+					<p>No GIFs found...👎</p>
 				)}
 			</section>
 		</main>

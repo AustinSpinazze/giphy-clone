@@ -9,7 +9,7 @@ const Card = ({ gif }: CardProps) => {
 
 	return (
 		<>
-			{gif.images.original !== undefined ? (
+			{gif !== undefined ? (
 				<article className={styles.card}>
 					<video
 						autoPlay={true}
@@ -42,7 +42,7 @@ const Card = ({ gif }: CardProps) => {
 					</div>
 				</article>
 			) : (
-				<p>There was a problem rendering the GIF...</p>
+				<p>There was a problem rendering this GIF...</p>
 			)}
 		</>
 	);

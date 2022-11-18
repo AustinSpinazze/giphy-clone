@@ -151,7 +151,6 @@ export interface GridProps {
 	gifs: GIF[];
 	Card: React.FC<CardProps>;
 	columns: string;
-	loading: boolean;
 }
 
 export interface SearchHistoryState {
